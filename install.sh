@@ -132,14 +132,14 @@ arch-chroot /mnt ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/font
 arch-chroot /mnt hwclock --systohc
 
 # localizing system
-arch-chroot /mnt sed -ie 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
-arch-chroot /mnt sed -ie 's/#en_US ISO-8859-1/en_US ISO-8859-1/g' /etc/locale.gen
+arch-chroot /mnt sed -ie 's/#it_IT.UTF-8 UTF-8/it_IT.UTF-8 UTF-8/g' /etc/locale.gen
+arch-chroot /mnt sed -ie 's/#it_IT ISO-8859-1/it_IT ISO-8859-1/g' /etc/locale.gen
 
 # generating locale
 arch-chroot /mnt locale-gen
 
 # setting system language
-arch-chroot /mnt echo "LANG=en_US.UTF-8" >> /mnt/etc/locale.conf
+arch-chroot /mnt echo "LANG=it_IT.UTF-8" >> /mnt/etc/locale.conf
 
 # setting machine name
 arch-chroot /mnt echo "caprarch" >> /mnt/etc/hostname
