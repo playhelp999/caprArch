@@ -108,7 +108,7 @@ pulseaudio mate-media pamixer telegram-desktop python python-pip wget \
 openssh xorg-xrandr noto-fonts-emoji imagemagick xclip light \
 ttf-roboto playerctl papirus-icon-theme hwloc p7zip \
 nemo linux-firmware tree man fzf zsh-syntax-highlighting xdotool cronie \
-python-dbus bind-tools
+python-dbus bind-tools xfce4
 
 # generating fstab
 genfstab -U /mnt >> /mnt/etc/fstab
