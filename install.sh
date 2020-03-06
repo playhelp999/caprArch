@@ -181,18 +181,6 @@ arch-chroot /mnt systemctl start systemd-resolved.service
 arch-chroot /mnt echo "exec startxfce4" >> /mnt/root/.xinitrc
 arch-chroot /mnt echo "exec startxfce4" >> /mnt/home/luca/.xinitrc
 
-# installing yay
-arch-chroot /mnt sudo -u luca git clone https://aur.archlinux.org/yay.git /home/luca/yay_tmp_install
-arch-chroot /mnt sudo -u luca /bin/zsh -c "cd /home/luca/yay_tmp_install && yes | makepkg -si"
-arch-chroot /mnt rm -rf /home/luca/yay_tmp_install
-
-# installing various packages from AUR
-arch-chroot /mnt sudo -u luca yay -S downgrade --noconfirm
-arch-chroot /mnt sudo -u luca yay -S whatsapp-nativefier --noconfirm
-
-# installing better font rendering packages
-arch-chroot /mnt sudo -u luca /bin/zsh -c "yes | yay -S freetype2-infinality-remix fontconfig-infinality-remix cairo-infinality-remix"
-
 # installing oh-my-zsh
 arch-chroot /mnt sudo -u luca /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
