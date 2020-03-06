@@ -4,15 +4,6 @@ boot_partition_size=500
 # home partition size, in GB
 home_partition_size=80
 
-# checks wheter there is multilib repo enabled properly or not
-IS_MULTILIB_REPO_DISABLED=$(cat /etc/pacman.conf | grep "#\[multilib\]" | wc -l)
-if [ "$IS_MULTILIB_REPO_DISABLED" == "1" ]
-then
-    echo "You need to enable [multilib] repository inside /etc/pacman.conf file before running this script, aborting installation"
-    exit -1
-fi
-echo "[multilib] repo correctly enabled, continuing"
-
 # syncing system datetime
 timedatectl set-ntp true
 
@@ -112,10 +103,6 @@ python-dbus bind-tools xfce4
 
 # generating fstab
 genfstab -U /mnt >> /mnt/etc/fstab
-
-# adding multilib repo inside chroot install environment
-arch-chroot /mnt echo "[multilib]" >> /etc/pacman.conf
-arch-chroot /mnt echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 # updating repo status
 arch-chroot /mnt pacman -Syyy
@@ -220,10 +207,6 @@ arch-chroot /mnt sudo -u luca git clone https://github.com/VundleVim/Vundle.vim.
 # create pictures folder, secrets folder and moving default wallpaper
 arch-chroot /mnt sudo -u luca mkdir /home/luca/Pictures/
 arch-chroot /mnt sudo -u luca mkdir /home/luca/.secrets/
-
-# enabled [multilib] repo on installed system
-arch-chroot /mnt echo "[multilib]" >> /etc/pacman.conf
-arch-chroot /mnt echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 # enable features on /etc/pacman.conf file
 arch-chroot /mnt sed -ie 's/#UseSyslog/UseSyslog/g' /etc/pacman.conf
