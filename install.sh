@@ -129,7 +129,7 @@ arch-chroot /mnt locale-gen
 arch-chroot /mnt echo "LANG=it_IT.UTF-8" >> /mnt/etc/locale.conf
 
 # setting wifi tray helper
-arch-chroot /mnt sudo pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring
+arch-chroot /mnt sudo pacman -S wpa_supplicant wireless_tools networkmanager network-manager-applet gnome-keyring --noconfirm
 arch-chroot /mnt sudo systemctl disable dhcpcd.service
 arch-chroot /mnt sudo systemctl disable dhcpcd@.service
 arch-chroot /mnt sudo systemctl stop dhcpcd.service
