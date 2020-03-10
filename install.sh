@@ -191,8 +191,9 @@ arch-chroot /mnt systemctl start systemd-resolved.service
 echo ""
 echo "MOVING FILE CONFIGS!"
 echo ""
-arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch $HOME
-arch-chroot /mnt sudo -u luca ./caprArch/install_configs.sh
+arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch/ /home/luca/caprArch
+arch-chroot /mnt sudo -u luca /bin/zsh -c "chmod 700 /home/luca/caprArch/install_configs.sh"
+arch-chroot /mnt sudo -u luca /bin/zsh -c "cd /home/luca/caprArch/ && ./install_configs.sh"
 
 # installing oh-my-zsh
 arch-chroot /mnt sudo -u luca /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
