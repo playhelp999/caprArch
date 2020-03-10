@@ -188,8 +188,8 @@ arch-chroot /mnt systemctl enable systemd-resolved.service
 arch-chroot /mnt systemctl start systemd-resolved.service
 
 # making i3 default for startx for both root and luca
-arch-chroot /mnt echo "exec startxfce4" >> /mnt/root/.xinitrc
-arch-chroot /mnt echo "exec startxfce4" >> /mnt/home/luca/.xinitrc
+arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch
+arch-chroot /mnt sudo -u luca ./caprArch/install_configs.sh
 
 # installing oh-my-zsh
 arch-chroot /mnt sudo -u luca /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
