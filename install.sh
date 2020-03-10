@@ -188,6 +188,9 @@ arch-chroot /mnt systemctl enable systemd-resolved.service
 arch-chroot /mnt systemctl start systemd-resolved.service
 
 # making i3 default for startx for both root and luca
+echo ""
+echo "MOVING FILE CONFIGS!"
+echo ""
 arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch
 arch-chroot /mnt sudo -u luca ./caprArch/install_configs.sh
 
