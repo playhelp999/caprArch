@@ -187,14 +187,6 @@ arch-chroot /mnt systemctl enable sshd.service
 arch-chroot /mnt systemctl enable systemd-resolved.service
 arch-chroot /mnt systemctl start systemd-resolved.service
 
-# making i3 default for startx for both root and luca
-echo ""
-echo "MOVING FILE CONFIGS!"
-echo ""
-arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch/ /home/luca/caprArch
-arch-chroot /mnt sudo -u luca /bin/zsh -c "chmod 700 /home/luca/caprArch/install_configs.sh"
-arch-chroot /mnt sudo -u luca /bin/zsh -c "cd /home/luca/caprArch/ && ./install_configs.sh"
-
 # installing oh-my-zsh
 arch-chroot /mnt sudo -u luca /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -215,6 +207,14 @@ arch-chroot /mnt sed -ie 's/#UseSyslog/UseSyslog/g' /etc/pacman.conf
 arch-chroot /mnt sed -ie 's/#Color/Color/g' /etc/pacman.conf
 arch-chroot /mnt sed -ie 's/#TotalDownload/TotalDownload/g' /etc/pacman.conf
 arch-chroot /mnt sed -ie 's/#VerbosePkgLists/VerbosePkgLists/g' /etc/pacman.conf
+
+# making i3 default for startx for both root and luca
+echo ""
+echo "MOVING FILE CONFIGS!"
+echo ""
+arch-chroot /mnt sudo -u luca git clone https://github.com/playhelp999/caprArch/ /home/luca/caprArch
+arch-chroot /mnt sudo -u luca /bin/zsh -c "chmod 700 /home/luca/caprArch/install_configs.sh"
+arch-chroot /mnt sudo -u luca /bin/zsh -c "cd /home/luca/caprArch/ && ./install_configs.sh"
 
 # unmounting all mounted partitions
 umount -R /mnt
