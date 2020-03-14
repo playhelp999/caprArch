@@ -188,7 +188,7 @@ arch-chroot /mnt systemctl enable systemd-resolved.service
 arch-chroot /mnt systemctl start systemd-resolved.service
 
 # installing oh-my-zsh
-arch-chroot /mnt sudo -u luca /bin/zsh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+arch-chroot /mnt sudo -u mrcz curl -O https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh && chmod +x install.sh && RUNZSH=no ./install.sh && rm ./install.sh
 
 # installing pi theme for zsh
 arch-chroot /mnt sudo -u luca /bin/zsh -c "wget -O /home/luca/.oh-my-zsh/themes/pi.zsh-theme https://raw.githubusercontent.com/tobyjamesthomas/pi/master/pi.zsh-theme"
